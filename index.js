@@ -1,6 +1,9 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 const jest = require('jest')
+var manager = [];
+var engineer = [];
+var intern = [];
 
 
 function askForManagerInfo(){
@@ -27,6 +30,7 @@ function askForManagerInfo(){
         }
     ])
     .then((answers) => {
+        manager = answers;
         addAnEmployee();
     });
 }
@@ -55,8 +59,13 @@ function askForEngineerInfo(){
         }
     ])
     .then((answers) => {
-        addAnEmployee();
-    });
+            var newEngineer = answers
+            var arrayContent = engineer
+            engineer = arrayContent.concat(newEngineer);
+            console.log(engineer);
+            console.log(engineer.length);
+            addAnEmployee();
+    })
 }
 
 function askForInternInfo(){
@@ -83,6 +92,11 @@ function askForInternInfo(){
         }
     ])
     .then((answers) => {
+        var newIntern = answers
+        var arrayContent = intern
+        intern = arrayContent.concat(newIntern);
+        console.log(intern);
+        console.log(intern.length);
         addAnEmployee();
     });
 }
