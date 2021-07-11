@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/JChosay/hw9-team-profile-generator#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
     "fs": "0.0.1-security",
     "inquirer": "^8.1.1",
     "jest": "^27.0.6"
