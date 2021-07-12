@@ -7,11 +7,6 @@ var manager = [];
 var engineer = [];
 var intern = [];
 const writeFileAsync = util.promisify(fs.writeFile);
-// const newPage = createHTMLDocument('index.html');
-// const newHeader = createHTMLDocument('header.html');
-// const newManager = createHTMLDocument('manager.html');
-// const newEngineer = createHTMLDocument('engineer.html');
-// const newIntern = createHTMLDocument('intern.html');
 var sectionEngineer = []
 var sectionIntern = []
 
@@ -33,7 +28,8 @@ const sectionHeader =
                 <h1 class="display-4">Your Team</h1>
                 <p class="lead">What a bunch.</p
             </div>
-        </div>`
+        </div>
+        `
 
 function askForManagerInfo(){
     inquirer.prompt([
@@ -62,31 +58,34 @@ function askForManagerInfo(){
         manager = answers;
         sectionManager = 
         `
-        <div id="manager" class="container-fluid d-flex flex-row bg-dark pt-3">
-            <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3">
+        <div id='main'>
+            <!--Manager DIV-->
+            <div id="manager" class="container-fluid d-flex flex-row bg-dark pt-3">
+                <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3"></div>
+
                 <!-- //Manager Card// -->
                 <div class="card">
                     <h4 class="card-header text-center pt-3 pb-1">${manager.empname}</h4>
                     <h6 class="card-subtitle text-center pt-3 pb-0">Manager</h6>
-                    <div class="card-body mt-0 pt-1">              
+                    <div class="card-body mt-0 pt-1">
                         <div class="card" style="background-color:black;">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${manager.id}</li>
                                 <li class="list-group-item" style="background-color: aquamarine;">Office number: ${manager.office}</li>
                             </ul>
                         </div>
-                    
+
                         <button class="btn btn-primary btn-block">Email Address: ${manager.email}</button>
                     </div>
                 </div><!--Closes individual manager card-->
             </div><!--closes container class-->
         </div><!--closes manager card div-->
-        `
-        console.log(sectionManager);
 
-        // const htmlContent = generateManager(manager);
-        // fs.writeFile('newManager', htmlContent, (err) =>
-        //     err ? console.log(err) : console.log('Successfully generated your HTML file, jerk.'))
+        <!--engineer DIV-->
+        <div id="engineer" class="container-fluid d-flex flex-row bg-dark pt-3">
+            <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3"></div>
+
+        `
         addAnEmployee();
     });
 }
@@ -120,18 +119,17 @@ function askForEngineerInfo(){
         // engineer = arrayContent.concat(newEngineer);
         var tempText = 
         `
-            <div class="card">
-                <h4 class="card-header text-center pt-3 pb-1">${newEngineer.empname}</h4>
-                <h6 class="card-subtitle text-center pt-3 pb-0">Engineer</h6>
-                
-                <div class="card-body mt-0 pt-1">              
-                    <div class="card" style="background-color:black;">
-                        <ul class="list-group list-group-flush">
-                        <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${newEngineer.id}</li>
-                    </div>
-                
+        <div class="card">
+            <h4 class="card-header text-center pt-3 pb-1">${newEngineer.empname}</h4>
+            <h6 class="card-subtitle text-center pt-3 pb-0">Engineer</h6>
+
+            <div class="card-body mt-0 pt-1">
+                <div class="card" style="background-color:black;">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${newEngineer.id}</li>
+                </div>
+
                 <button class="btn btn-primary btn-block mt-1">GitHub User Name: ${newEngineer.github}</button>
-                
                 <button class="btn btn-primary btn-block mt-1">Email Address: ${newEngineer.email}</button>
             </div><!--closes individual engineer card-->
         
@@ -176,17 +174,17 @@ function askForInternInfo(){
             <div class="card d-flex">
                 <h4 class="card-header text-center pt-3 pb-1">${newIntern.empname}</h4>
                 <h6 class="card-subtitle text-center pt-3 pb-0">Intern</h6>
-                
-                <div class="card-body mt-0 pt-1">              
+
+                <div class="card-body mt-0 pt-1">
                     <div class="card" style="background-color:black;">
                         <ul class="list-group list-group-flush">
                         <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${newIntern.id}</li>
                         <li class="list-group-item" style="background-color: aquamarine;">School: ${newIntern.school}</li>
                         </ul>
                 </div>
-        
-                <button class="btn btn-primary btn-block mt-1">Email Address: eatit@whatever.edu</button>
+                <button class="btn btn-primary btn-block mt-1">Email Address: ${newIntern.email}</button>
             </div><!--closes individual intern card-->
+
         `
         // var arrayContent = intern
         // intern = arrayContent.concat(newIntern);
@@ -228,23 +226,14 @@ function init(){
 init();
 
 function buildPage(){
-    // console.log("Manager:");
-    // console.log(manager);
-    // console.log("Engineers:");
-    // console.log(engineer);
-    // console.log("Interns:");
-    // console.log(intern);
-    var splice1 = `
-    <div id='main'>
-            <!--Manager DIV-->
-            <div id="manager" class="container-fluid d-flex flex-row bg-dark pt-3">
-                <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3"></div>
-    `
+    // var splice1 = `
+    // <div id='main'>
+    //         <!--Manager DIV-->
+    //         <div id="manager" class="container-fluid d-flex flex-row bg-dark pt-3">
+    //             <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3"></div>
+    // `
 
     var splice2 = `
-                </div><!--closes container class-->
-            </div><!--closes manager card div-->
-
             <!--engineer DIV-->
             <div id="engineer" class="container-fluid bg-dark">
                 <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3 d-flex">
@@ -252,31 +241,34 @@ function buildPage(){
 
     var splice3 = `
                 </div><!--closes engineer container class-->
+
             </div><!--closes engineer DIV-->
 
-            <div id="intern" class="container-fluid bg-dark pb-3 d-flex">
-                <!-- <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3 d-flex flex-row"> -->
+        <div id="intern" class="container-fluid d-flex flex-row bg-dark pt-3">
+            <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3"></div>
+        
     `
 
     var splice4 = `
-
-                </div><!--closes intern container class-->
+    
             </div><!--closes Intern DIV-->
         </div>
     </div><!-- /*closes main container-fluid*/ -->
+    
 </body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </html>
-`
-const htmlRaw = [sectionHeader+splice1+sectionManager+splice2+sectionEngineer+splice3+sectionIntern+splice4];
+    `
+    const htmlRaw = [sectionHeader+sectionManager+splice2+sectionEngineer+splice3+sectionIntern+splice4];
 
-// htmlRaw = htmlRaw.replace(/(\n)/gm,"");
-html = htmlRaw.toString();
-// html = html.replace(/"\n'","");
-console.log(html);
-    
+    html = htmlRaw.toString();
+    console.log(html);
 
+    fs.writeFile('index.html', html, (err) => {
+        if (err) throw err;
+    })
 }
