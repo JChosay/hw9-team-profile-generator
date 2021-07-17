@@ -141,7 +141,6 @@ function askForEngineerInfo(){
         var arrayContent = sectionEngineer;
         sectionEngineer = arrayContent + tempText;
         // sectionEngineer = arrayContent.concat(tempText);
-        console.log(sectionEngineer);
 
         addAnEmployee();
     })
@@ -196,8 +195,7 @@ function askForInternInfo(){
         
         var arrayContent = sectionIntern;
         sectionIntern = arrayContent + tempText;
-        console.log(sectionIntern);
-
+        
         addAnEmployee();
     });
 }
@@ -217,6 +215,7 @@ function addAnEmployee(){
         }else if (answers.emptype === "Intern"){
             askForInternInfo();
         }else{
+            console.log("The html for your new team website has been generated.");
             console.log("Thanks for playing, guy!");
             buildPage();
         }
@@ -255,7 +254,7 @@ function buildPage(){
     const htmlRaw = [sectionHeader+sectionManager+sectionEngineer+splice3+sectionIntern+splice4];
 
     html = htmlRaw.toString();
-    console.log(html);
+    // console.log(html);
 
     fs.writeFile('index.html', html, (err) => {
         if (err) throw err;
