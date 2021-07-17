@@ -16,11 +16,11 @@ If users choose to add an engineer, the prompts for those data types then appear
 
 After users finish entering the information for each engineer, the code again returns to "addAnEmployee" to prompt for another user entry. 
 
-The same process applies to adding intern, with the code then returning to the input prompt.
+The same process applies to adding interns, with the code then returning to the input prompt.
 
 Each result generates a new engineer or intern card for each new entered employee, appending the resulting html code to either sectionEngineer or sectionIntern depending on type of employee inputted.
 
-When the user indicates in the "addAnEmployee" prompt, the application then appends all the necessary html placeholders together in a master variable. This variable is then passed through a toString, the result of which throws to fs.writeFile.
+When the user indicates in the "addAnEmployee" prompt that team member entry has been completed, the application then appends all the necessary html placeholders together in a master variable. This variable is then passed through a toString, the result of which throws to fs.writeFile.
 
 The html file is then generated, and the user gets a farewell screen thanking them for use.
 

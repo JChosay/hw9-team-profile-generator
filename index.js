@@ -60,31 +60,31 @@ function askForManagerInfo(){
         `
         <div id='main'>
             <!--Manager DIV-->
-            <div id="manager" class="container-fluid d-flex flex-row bg-dark pt-3">
-                <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3"></div>
-
-                <!-- //Manager Card// -->
-                <div class="card">
-                    <h4 class="card-header text-center pt-3 pb-1">${manager.empname}</h4>
-                    <h6 class="card-subtitle text-center pt-3 pb-0">Manager</h6>
-                    <div class="card-body mt-0 pt-1">
-                        <div class="card" style="background-color:black;">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${manager.id}</li>
-                                <li class="list-group-item" style="background-color: aquamarine;">Office number: ${manager.office}</li>
-                            </ul>
+            <div id="manager" class="container-fluid d-flex flex-row bg-dark pt-3 justify-content-center">
+                <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3">
+                    
+                    <!--Opens Manager Card-->
+                    <div class="card" min-vw-20>
+                        <h4 class="card-header text-center pt-3 pb-1">${manager.empname}</h4>
+                        <h6 class="card-subtitle text-center pt-3 pb-0">Manager</h6>
+                        <div class="card-body mt-0 pt-1">              
+                            <div class="card" style="background-color:black;">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${manager.id}</li>
+                                    <li class="list-group-item" style="background-color: aquamarine;">Office number: ${manager.office}</li>
+                                </ul>
+                            </div>
+                        
+                            <a href="mailto:${manager.email}" target="_blank">
+                            <button class="btn btn-primary btn-block" id="${manager.email}" >Email Address: ${manager.email}</button></a>
                         </div>
+                    </div><!--Closes individual manager card-->
+                </div><!--closes container class-->
+            </div><!--closes manager card div-->
 
-                        <button class="btn btn-primary btn-block">Email Address: ${manager.email}</button>
-                    </div>
-                </div><!--Closes individual manager card-->
-            </div><!--closes container class-->
-        </div><!--closes manager card div-->
-
-        <!--engineer DIV-->
-        <div id="engineer" class="container-fluid d-flex flex-row bg-dark pt-3">
-            <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3"></div>
-
+            <!--engineer DIV-->
+            <div id="engineer" class="container-fluid bg-dark pb-3 d-flex col-12 justify-content-center">
+                
         `
         addAnEmployee();
     });
@@ -115,26 +115,29 @@ function askForEngineerInfo(){
     ])
     .then((answers) => {
         var newEngineer = answers
-        // var arrayContent = engineer
-        // engineer = arrayContent.concat(newEngineer);
         var tempText = 
         `
-        <div class="card">
-            <h4 class="card-header text-center pt-3 pb-1">${newEngineer.empname}</h4>
-            <h6 class="card-subtitle text-center pt-3 pb-0">Engineer</h6>
-
-            <div class="card-body mt-0 pt-1">
-                <div class="card" style="background-color:black;">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${newEngineer.id}</li>
+            <!--Opens Individual Engineer Card-->
+            <div class="col-3">
+                <div class="card d-flex min-vw-20">
+                    <h4 class="card-header text-center pt-3 pb-1">${newEngineer.empname}</h4>
+                    <h6 class="card-subtitle text-center pt-3 pb-0">Engineer</h6>
+                    <div class="card-body mt-0 pt-1">              
+                        <div class="card" style="background-color:black;">
+                            <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${newEngineer.id}</li>
+                        </div>
+                    </div>
+                    
+                    <a href = "https://github.com/${newEngineer.github}" target="_blank">
+                    <button class="btn btn-primary btn-block mt-1 id="${newEngineer.github}">GitHub User Name: ${newEngineer.github}</button></a>
+                    
+                    <a href="mailto:${newEngineer.email}" target="_blank">
+                    <button class="btn btn-primary btn-block mt-1" id="${newEngineer.email}">Email Address: ${newEngineer.email}</button></a>
                 </div>
-
-                <button class="btn btn-primary btn-block mt-1">GitHub User Name: ${newEngineer.github}</button>
-                <button class="btn btn-primary btn-block mt-1">Email Address: ${newEngineer.email}</button>
             </div><!--closes individual engineer card-->
         
         `
-    
         var arrayContent = sectionEngineer;
         sectionEngineer = arrayContent + tempText;
         // sectionEngineer = arrayContent.concat(tempText);
@@ -171,23 +174,25 @@ function askForInternInfo(){
         var newIntern = answers
         var tempText = 
         `
-            <div class="card d-flex">
-                <h4 class="card-header text-center pt-3 pb-1">${newIntern.empname}</h4>
-                <h6 class="card-subtitle text-center pt-3 pb-0">Intern</h6>
-
-                <div class="card-body mt-0 pt-1">
-                    <div class="card" style="background-color:black;">
-                        <ul class="list-group list-group-flush">
-                        <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${newIntern.id}</li>
-                        <li class="list-group-item" style="background-color: aquamarine;">School: ${newIntern.school}</li>
-                        </ul>
+            <!--Opens Intern Card-->
+            <div class="col-3 min-vw-20"> -->
+                <div class="card d-flex">
+                    <h4 class="card-header text-center pt-3 pb-1">${newIntern.empname}</h4>
+                    <h6 class="card-subtitle text-center pt-3 pb-0">Intern</h6>
+                    <div class="card-body mt-0 pt-1">              
+                        <div class="card" style="background-color:black;">
+                            <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style="background-color: aquamarine;">ID Number: ${newIntern.id}</li>
+                            <li class="list-group-item" style="background-color: aquamarine;">School: ${newIntern.school}</li>
+                            </ul>
+                        </div>
+                    </div>
+            
+                    <a href="mailto:${newIntern.email}" target="_blank">
+                    <button class="btn btn-primary btn-block mt-1" id="emailButtons">Email Address: ${newIntern.email}</button></a>
                 </div>
-                <button class="btn btn-primary btn-block mt-1">Email Address: ${newIntern.email}</button>
             </div><!--closes individual intern card-->
-
         `
-        // var arrayContent = intern
-        // intern = arrayContent.concat(newIntern);
         
         var arrayContent = sectionIntern;
         sectionIntern = arrayContent + tempText;
@@ -226,44 +231,28 @@ function init(){
 init();
 
 function buildPage(){
-    // var splice1 = `
-    // <div id='main'>
-    //         <!--Manager DIV-->
-    //         <div id="manager" class="container-fluid d-flex flex-row bg-dark pt-3">
-    //             <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3"></div>
-    // `
-
-    var splice2 = `
-            <!--engineer DIV-->
-            <div id="engineer" class="container-fluid bg-dark">
-                <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3 d-flex">
+    
+    var splice3 = 
     `
-
-    var splice3 = `
-                </div><!--closes engineer container class-->
-
             </div><!--closes engineer DIV-->
 
-        <div id="intern" class="container-fluid d-flex flex-row bg-dark pt-3">
-            <div class="col-12 col-sm-6 col-md-3 mb-3 pt-3"></div>
+            <div id="intern" class="container-fluid bg-dark pb-3 d-flex col-12 justify-content-center">
         
     `
 
-    var splice4 = `
-    
+    var splice4 = 
+    `
             </div><!--closes Intern DIV-->
         </div>
     </div><!-- /*closes main container-fluid*/ -->
-    
 </body>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </html>
     `
-    const htmlRaw = [sectionHeader+sectionManager+splice2+sectionEngineer+splice3+sectionIntern+splice4];
+    const htmlRaw = [sectionHeader+sectionManager+sectionEngineer+splice3+sectionIntern+splice4];
 
     html = htmlRaw.toString();
     console.log(html);
